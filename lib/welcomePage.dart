@@ -1,3 +1,4 @@
+import 'package:dev_flow/rootPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,6 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Logo + DevFlow
               Row(
                 children: [
                   Image.asset("assets/logo.png", height: 60, width: 60),
@@ -61,8 +61,6 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
 
 
           const SizedBox(height: 100),
-
-          // Welcome title
           const Center(
             child: Text(
               "Welcome",
@@ -74,10 +72,7 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
               ),
             ),
           ),
-
           const SizedBox(height: 50),
-
-          // Text paragraphs
           Text(
             "print(\"DevFlow where you can find the latest programming and developing news , free courses , road maps and Ai tools\");",
             style: TextStyle(
@@ -104,8 +99,6 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
             },
           ),
           const Spacer(),
-
-          // Button
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -117,6 +110,7 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
                 ),
               ),
               onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => root()));
               },
               child: Row(
                   mainAxisSize: MainAxisSize.min,
