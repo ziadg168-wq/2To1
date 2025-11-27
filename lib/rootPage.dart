@@ -1,4 +1,5 @@
 import 'package:dev_flow/homePage.dart';
+import 'package:dev_flow/playListPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class _rootState extends State<root> {
   void initState(){
     pages=[
       home_screen(),
+      PlaylistsScreen()
     ];
     controller=PageController(initialPage: currentScreen);
     super.initState();
@@ -32,8 +34,6 @@ class _rootState extends State<root> {
             title:
             Row(
                 children: [
-                  //Image.asset("assets/logo.png", height: 40, width: 60,),
-                  //const SizedBox(width: 12),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
