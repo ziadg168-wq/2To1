@@ -48,8 +48,15 @@ class _videos_screenState extends State<videos_screen> {
                         ),
                       ])
                 ]
-            )
-        ),
+            ),
+            actions: <Widget>[
+        IconButton(
+        icon: Icon(Icons.arrow_back ,color:  Colors.white),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+        ]),
     body:WebViewWidget(controller: _controller),),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:dev_flow/homePage.dart';
 import 'package:dev_flow/playListPage.dart';
+import 'package:dev_flow/roadMapListPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _rootState extends State<root> {
   void initState(){
     pages=[
       home_screen(),
+      roadMap_screen(),
       PlaylistsScreen()
     ];
     controller=PageController(initialPage: currentScreen);

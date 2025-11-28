@@ -20,7 +20,7 @@ class PlaylistsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0D0D0D),
+      backgroundColor: Color(0xFF101116),
       appBar: AppBar(
           backgroundColor: const Color(0xFF101116),
           elevation: 0,
@@ -49,7 +49,7 @@ class PlaylistsScreen extends StatelessWidget {
           return Container(
             margin: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Color(0xFF1A1A1F),
+              color: Color(0xFF1A1C23),
               borderRadius: BorderRadius.circular(10),
             ),
             child: ListTile(
