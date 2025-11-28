@@ -74,7 +74,7 @@ class _welcome_screenState extends State<welcome_screen>with SingleTickerProvide
           ),
           const SizedBox(height: 50),
           Text(
-            "print(\"DevFlow where you can find the latest programming and developing news , free courses , road maps and Ai tools\");",
+            "print(\"DevFlow where you can find the latest programming and developing news , free courses and road maps \");",
             style: TextStyle(
               fontSize: 25,
               color: Colors.white,
