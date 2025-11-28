@@ -14,7 +14,8 @@ Future<List<RssItem>> loadNews(String url) async {
 }
 
 class home_screen extends StatefulWidget {
-  static const String rooteScreen="homePage";
+  static const String rooteScreen = "homePage";
+
   const home_screen({super.key});
 
   @override
@@ -24,10 +25,50 @@ class home_screen extends StatefulWidget {
 class _home_screenState extends State<home_screen> {
   late Future<List<RssItem>> news;
 
+  // =============== دالة دمج أكثر من RSS ==================
+  Future<List<RssItem>> loadMultipleNews(List<String> urls) async {
+    List<RssItem> allItems = [];
+
+    for (String url in urls) {
+      try {
+        final response = await http.get(Uri.parse(url));
+
+        if (response.statusCode == 200) {
+          final feed = RssFeed.parse(response.body);
+          allItems.addAll(feed.items ?? []);
+        }
+      } catch (e) {
+        print("Error loading feed: $url → $e");
+      }
+    }
+
+    return allItems;
+  }
+  // ==========================================================
+
   @override
   void initState() {
     super.initState();
-    news = loadNews("https://stackoverflow.blog/feed/");
+
+    const feeds = [
+      "https://stackoverflow.blog/feed/",
+      "https://dev.to/feed",
+      "https://www.freecodecamp.org/news/rss/",
+      "https://alistapart.com/main/feed/",
+      "https://hnrss.org/frontpage",
+      "https://techcrunch.com/feed/",
+      "https://arstechnica.com/feed/",
+      "https://www.wired.com/feed/rss",
+      "https://css-tricks.com/feed/",
+      "https://www.smashingmagazine.com/feed/",
+      "https://www.sitepoint.com/feed/",
+      "https://feed.infoq.com/",
+      "https://developers.googleblog.com/atom.xml",
+      "https://hacks.mozilla.org/feed/",
+      "https://devblogs.microsoft.com/feed/",
+    ];
+
+    news = loadMultipleNews(feeds);
   }
 
   @override
@@ -37,24 +78,14 @@ class _home_screenState extends State<home_screen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF101116),
         elevation: 0,
-        title: Row(
-          children: [
-           // Image.asset("assets/logo.png", height: 40, width: 60,),
-           const SizedBox(width: 12),
-        Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                "Latest News:",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ])
-          ]
-        )
+        title: const Text(
+          "Latest News:",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: FutureBuilder<List<RssItem>>(
         future: news,
